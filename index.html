@@ -1,0 +1,586 @@
+<!DOCTYPE HTML>
+<!--
+	Ethereal by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Content: Caitlin Akkerman's personal page
+-->
+<html>
+	<head>
+		<title>Loading Personality...Please Wait.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* ════════════════════════════════════════
+			   DARK COLOUR SCHEME OVERRIDE
+			   ════════════════════════════════════════ */
+
+			/* ── Page & default panel background ── */
+			body { background-color: #0f0f17 !important; }
+
+			/* Default (no-color) panel → dark charcoal */
+			.panel {
+				background-color: #1a1a2e !important;
+				background-image: none !important;
+			}
+			.panel p, .panel li { color: rgba(255,255,255,0.75); }
+			.panel h1, .panel h2, .panel h3,
+			.panel h1.major, .panel h2.major { color: #fff; }
+			.panel hr { border-color: rgba(255,255,255,0.15); }
+
+			/* ── Banner panel (hero) ── */
+			.panel.banner {
+				background-image: url('images/overlay.png'),
+					linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%) !important;
+				background-color: #16213e !important;
+			}
+
+			/* ── color1 → deep navy (Skills) ── */
+			.panel.color1,
+			.intro.color1 {
+				background-image: url('images/overlay.png'),
+					linear-gradient(135deg, #0d2137 20%, #1a3a5c 100%) !important;
+				background-color: #0d2137 !important;
+			}
+
+			/* ── color2 → deep emerald (Facts intro) ── */
+			.panel.color2, .intro.color2 {
+				background-image: url('images/overlay.png'),
+					linear-gradient(135deg, #0d3327 20%, #1a5c40 100%) !important;
+				background-color: #0d3327 !important;
+			}
+
+			/* ── color3 → deep burgundy (Red Flags intro) ── */
+			.panel.color3, .intro.color3 {
+				background-image: url('images/overlay.png'),
+					linear-gradient(135deg, #2d1a2e 20%, #4a1942 100%) !important;
+				background-color: #2d1a2e !important;
+			}
+
+			/* ── color4 → deep indigo (Contact) ── */
+			.panel.color4, .intro.color4 {
+				background-image: url('images/overlay.png'),
+					linear-gradient(135deg, #1a1a3e 20%, #252560 100%) !important;
+				background-color: #1a1a3e !important;
+			}
+			.panel.color4-alt {
+				background-color: #13132a !important;
+				background-image: none !important;
+			}
+
+			/* ── Spotlight panels ── */
+			.panel.spotlight {
+				background-color: #12121e !important;
+				background-image: none !important;
+			}
+
+			/* ── Primary button ── */
+			.button.primary.color1 {
+				background-color: #4a90d9 !important;
+				color: #fff !important;
+				box-shadow: none !important;
+			}
+			.button.primary.color1:hover { background-color: #5aa0e8 !important; }
+
+			/* ── Contact icons ── */
+			.contact-icons.color1 > li::before { color: #4a90d9 !important; }
+			.contact-icons.color1 > li > a { color: rgba(255,255,255,0.75) !important; }
+			.contact-icons.color1 > li > a:hover { color: #4a90d9 !important; }
+
+			/* ── Copyright ── */
+			.copyright { color: rgba(255,255,255,0.35) !important; }
+			.copyright a { color: rgba(255,255,255,0.55) !important; }
+
+			/* ── Map legend ── */
+			.legend-item, #map-counter, .map-hint {
+				color: rgba(255,255,255,0.75);
+			}
+
+			/* ── Loading pill ── */
+			.loading-pill {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				background: rgba(255,255,255,0.1);
+				border: 1px solid rgba(255,255,255,0.25);
+				border-radius: 20px;
+				padding: 6px 16px;
+				font-size: 0.78em;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				margin-bottom: 1.4em;
+				text-transform: uppercase;
+			}
+			.dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background: #6ee7b7;
+				animation: pulse 1.5s infinite;
+				flex-shrink: 0;
+			}
+			@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+			/* ── Trait bars ── */
+			.trait-row { margin-bottom: 20px; }
+			.trait-name-row {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 7px;
+				font-size: 1em;
+				font-weight: 700;
+				color: rgba(255,255,255,0.85);
+			}
+			.t-bar {
+				height: 10px;
+				background: rgba(255,255,255,0.15);
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			.t-fill {
+				height: 100%;
+				border-radius: 5px;
+				width: 0;
+				transition: width 1.2s ease;
+			}
+
+			/* ── Red Flags panel ── */
+			#redflags .intro h2,
+			#redflags .intro p,
+			#redflags .inner {
+				color: rgba(255,255,255,0.85) !important;
+			}
+			#traits {
+				max-width: 60%;
+			}
+
+			/* ── Skills panel background image ── */
+			#skills {
+				background-image: url('images/02.jpg');
+				background-size: cover;
+				background-position: center;
+				position: relative;
+			}
+			#skills::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background: rgba(0,0,0,0.35);
+			}
+			#skills .intro,
+			#skills .inner {
+				position: relative;
+				z-index: 1;
+			}
+
+			/* ── Skill cards ── */
+			.skill-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 14px;
+				margin-top: 8px;
+			}
+			.skill-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				padding: 16px 10px;
+				border-radius: 10px;
+				background: rgba(255,255,255,0.08);
+				border: 1px solid rgba(255,255,255,0.15);
+				text-align: center;
+				transition: background 0.2s, transform 0.15s;
+			}
+			.skill-card:hover {
+				background: rgba(255,255,255,0.14);
+				transform: translateY(-2px);
+			}
+			.skill-card .sk-icon {
+				font-size: 1.6em;
+			}
+			.skill-card .sk-label {
+				font-size: 0.72em;
+				font-weight: 800;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+				opacity: 0.9;
+				line-height: 1.3;
+			}
+
+			/* ── Facts list ── */
+			.fact-list { list-style: none; padding: 0; margin: 0; }
+			.fact-list li {
+				display: flex;
+				align-items: flex-start;
+				gap: 12px;
+				margin-bottom: 14px;
+				font-size: 0.9em;
+				line-height: 1.5;
+				color: rgba(255,255,255,0.85);
+			}
+			.fact-icon { font-size: 1.3em; flex-shrink: 0; }
+
+			/* ── Facts panel ── */
+			#facts .inner,
+			#facts .inner p,
+			#facts .inner li,
+			#facts .intro h2,
+			#facts .intro p {
+				color: rgba(255,255,255,0.85) !important;
+			}
+
+			/* ── Map ── */
+			#us-map {
+				display: grid;
+				grid-template-columns: repeat(11, 1fr);
+				gap: 4px;
+				width: 100%;
+				max-width: 520px;
+			}
+			.map-legend {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: space-between;
+				gap: 12px;
+				margin-bottom: 14px;
+			}
+			.legend-row { display: flex; gap: 16px; flex-wrap: wrap; }
+			.legend-item {
+				display: flex;
+				align-items: center;
+				gap: 7px;
+				font-size: 12px;
+				font-weight: 700;
+			}
+			.legend-box {
+				width: 13px;
+				height: 13px;
+				border-radius: 3px;
+				flex-shrink: 0;
+			}
+			#map-counter { font-size: 12px; font-weight: 800; opacity: 0.6; }
+			.map-hint { font-size: 11px; opacity: 0.5; font-weight: 600; margin-bottom: 12px; }
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+		<div id="page-wrapper">
+
+			<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 1 · Banner / Hero
+				     ───────────────────────────────────────── -->
+				<section class="panel banner right">
+					<div class="content color0 span-3-75">
+						<h1 class="major">Personality<br />Loading...<br />Please Wait.</h1>
+						<div class="loading-pill">
+							<div class="dot"></div>
+							Personality Successfully Loaded
+						</div>
+						<p>Welcome to my little corner of the internet 🫧<br />
+						I'm <strong>Caitlin</strong> — just trying to navigate a world that clearly
+						was not designed with me in mind.
+						<strong>Full-time chaos navigator. Part-time liability.</strong></p>
+						<ul class="actions">
+							<li><a href="#about" class="button primary color1 circle icon solid fa-angle-right">Next</a></li>
+						</ul>
+					</div>
+					<div class="image filtered span-1-75" data-position="25% 25%">
+						<img src="images/pic01.jpg" alt="" />
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 2 · About Me (Spotlight)
+				     ───────────────────────────────────────── -->
+				<section class="panel spotlight medium right" id="about">
+					<div class="content span-7">
+						<h2 class="major">A Little About Me 🌹</h2>
+						<p>Hey, hi, how ya doin'? I code for fun, spend money like I'm a drug lord,
+						and <strong>chase adventures any chance I get.</strong></p>
+						<p>If you're looking for someone stable, on time, and has life figured out —
+						I am <em>so</em> sorry you ended up here. But stick around anyway.</p>
+						<ul class="actions">
+							<li><a href="#skills" class="button primary color1 circle icon solid fa-angle-right">Next</a></li>
+						</ul>
+					</div>
+					<div class="image filtered tinted" data-position="top left">
+						<img src="images/pic02.jpg" alt="" />
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 3 · Skills (Icon Grid)
+				     ───────────────────────────────────────── -->
+				<section class="panel color1" id="skills">
+					<div class="intro joined">
+						<h2 class="major">😎 Skills</h2>
+						<p>A few things I pretend to be good at &amp; some I'm actually good at.</p>
+					</div>
+					<div class="inner">
+						<div class="skill-grid">
+							<div class="skill-card"><span class="sk-icon icon solid fa-laptop-code"></span><span class="sk-label">App Creation</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-clock"></span><span class="sk-label">Time Management</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-money-bill-wave"></span><span class="sk-label">Spending Money</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-comment-dots"></span><span class="sk-label">Complaining</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-hourglass-half"></span><span class="sk-label">Procrastination</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-users"></span><span class="sk-label">People Person</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-brain"></span><span class="sk-label">Overthinking</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-file-invoice-dollar"></span><span class="sk-label">Tax Professional</span></div>
+							<div class="skill-card"><span class="sk-icon icon solid fa-question-circle"></span><span class="sk-label">Decision Making</span></div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 4 · Red Flags & Traits
+				     ───────────────────────────────────────── -->
+				<section class="panel" id="redflags">
+					<div class="intro joined color3">
+						<h2 class="major">🚩 Red Flags &amp; Character Flaws</h2>
+						<p>All jokes aside, I'm actually a pretty cool person...I promise.</p>
+					</div>
+					<div class="inner columns">
+						<div class="span-4" id="traits"></div>
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 5 · Not So Fun Facts
+				     ───────────────────────────────────────── -->
+				<section class="panel" id="facts">
+					<div class="intro">
+						<h2 class="major">🥱 "Not So Fun" Facts</h2>
+						<p>I just realized, half of these are what some folks might consider flaws 😅 </p>
+					</div>
+					<div class="inner">
+						<ul class="fact-list" id="facts-list"></ul>
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 6 · Travel Map
+				     ───────────────────────────────────────── -->
+				<section class="panel" id="map">
+					<div class="intro">
+						<h2 class="major">✈ Oh the Places You'll Go...</h2>
+						<p>a map of where I've been and where I'd like to go</p>
+					</div>
+					<div class="inner">
+						<div class="map-legend">
+							<div class="legend-row">
+								<div class="legend-item">
+									<div class="legend-box" style="background:#ff6eb4;box-shadow:0 0 8px #ff6eb4aa"></div>
+									Where I've Been
+								</div>
+								<div class="legend-item">
+									<div class="legend-box" style="background:#ffe066;box-shadow:0 0 8px #ffe066aa"></div>
+									Where I'd Like to Go
+								</div>
+								<div class="legend-item">
+									<div class="legend-box" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.18)"></div>
+									Everything In Between
+								</div>
+							</div>
+							<div id="map-counter">0 / 51 visited</div>
+						</div>
+						<p class="map-hint">Click a state to mark visited → wishlist → unvisited.</p>
+						<div id="us-map"></div>
+					</div>
+				</section>
+
+				<!-- ─────────────────────────────────────────
+				     PANEL 7 · Contact
+				     ───────────────────────────────────────── -->
+				<section class="panel color4-alt" id="contact">
+					<div class="intro color4">
+						<h2 class="major">💬 Don't be shy, say Hi!</h2>
+						<p>I'm surprisingly responsive for someone who claims to have
+						absolutely terrible time management.</p>
+					</div>
+					<div class="inner columns divided">
+						<div class="span-1-5">
+							<ul class="contact-icons color1">
+								<li class="icon solid fa-envelope">
+									<a href="mailto:akkermancaitlin@gmail.com">akkermancaitlin@gmail.com</a>
+								</li>
+								<li class="icon brands fa-facebook-f">
+									<a href="https://www.facebook.com/caitlincasebolt/" target="_blank">facebook.com/caitlincasebolt</a>
+								</li>
+								<li class="icon brands fa-github">
+									<a href="https://github.com/CaitlinAkkerman" target="_blank">github.com/CaitlinAkkerman</a>
+								</li>
+								<li class="icon brands fa-linkedin">
+									<a href="https://www.linkedin.com/in/caitlin-akkerman/" target="_blank">linkedin.com/in/caitlin-akkerman</a>
+								</li>
+								<li class="icon solid fa-briefcase">
+									<a href="https://extraordinary-tulumba-74851f.netlify.app" target="_blank">Portfolio</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<!-- Copyright -->
+				<div class="copyright">
+					Made with ♥ and an unreasonable amount of caffeine. &nbsp;|&nbsp;
+					Template: <a href="https://html5up.net">HTML5 UP</a>.
+				</div>
+
+			</div>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/main.js"></script>
+
+		<script>
+		// ── Trait bars ──────────────────────────────────────
+		const traits = [
+			{ name: 'Sarcasm',        score: 97, color: '#ff6eb4' },
+			{ name: 'Sense of Humor', score: 85, color: '#ff9f43' },
+			{ name: 'Patience',       score: 43, color: '#6ee7b7' },
+			{ name: 'Creativity',     score: 12, color: '#c084fc' },
+			{ name: 'Music Taste',    score: 99, color: '#ffe066' },
+		];
+		const tl = document.getElementById('traits');
+		traits.forEach(t => {
+			tl.innerHTML += `
+				<div class="trait-row">
+					<div class="trait-name-row">
+						<span>${t.name}</span><span>${t.score}</span>
+					</div>
+					<div class="t-bar">
+						<div class="t-fill" style="background:${t.color}" data-w="${t.score}%"></div>
+					</div>
+				</div>`;
+		});
+		setTimeout(() => {
+			document.querySelectorAll('.t-fill').forEach(b => b.style.width = b.dataset.w);
+		}, 400);
+
+		// ── Facts ───────────────────────────────────────────
+		const facts = [
+			{ icon: '💡', text: 'My best ideas happen between the hours of 1am and 5am.' },
+			{ icon: '🌊', text: 'Being on the water is my happy place.' },
+			{ icon: '⌛', text: 'I do not know what "being on time" means. Forever late for everything.' },
+			{ icon: '😴', text: '2 moods: Sleep is for the weak and sleeping for a week.' },
+		];
+		const fl = document.getElementById('facts-list');
+		facts.forEach(f => {
+			fl.innerHTML += `<li><span class="fact-icon">${f.icon}</span>${f.text}</li>`;
+		});
+
+		// ── Map ─────────────────────────────────────────────
+		(function() {
+			const states = [
+				{r:0,c:9, a:'ME',n:'Maine'},
+				{r:1,c:8, a:'VT',n:'Vermont'},{r:1,c:9, a:'NH',n:'New Hampshire'},
+				{r:2,c:0, a:'WA',n:'Washington'},{r:2,c:1, a:'MT',n:'Montana'},
+				{r:2,c:2, a:'ND',n:'North Dakota'},{r:2,c:3, a:'MN',n:'Minnesota'},
+				{r:2,c:4, a:'WI',n:'Wisconsin'},{r:2,c:5, a:'MI',n:'Michigan'},
+				{r:2,c:8, a:'NY',n:'New York'},{r:2,c:9, a:'MA',n:'Massachusetts'},
+				{r:2,c:10,a:'RI',n:'Rhode Island'},
+				{r:3,c:0, a:'OR',n:'Oregon'},{r:3,c:1, a:'ID',n:'Idaho'},
+				{r:3,c:2, a:'SD',n:'South Dakota'},{r:3,c:3, a:'IA',n:'Iowa'},
+				{r:3,c:4, a:'IL',n:'Illinois'},{r:3,c:5, a:'IN',n:'Indiana'},
+				{r:3,c:6, a:'OH',n:'Ohio'},{r:3,c:7, a:'PA',n:'Pennsylvania'},
+				{r:3,c:8, a:'NJ',n:'New Jersey'},{r:3,c:9, a:'CT',n:'Connecticut'},
+				{r:4,c:0, a:'CA',n:'California'},{r:4,c:1, a:'NV',n:'Nevada'},
+				{r:4,c:2, a:'WY',n:'Wyoming'},{r:4,c:3, a:'NE',n:'Nebraska'},
+				{r:4,c:4, a:'MO',n:'Missouri'},{r:4,c:5, a:'KY',n:'Kentucky'},
+				{r:4,c:6, a:'WV',n:'West Virginia'},{r:4,c:7, a:'VA',n:'Virginia'},
+				{r:4,c:8, a:'MD',n:'Maryland'},{r:4,c:9, a:'DE',n:'Delaware'},
+				{r:5,c:1, a:'AZ',n:'Arizona'},{r:5,c:2, a:'UT',n:'Utah'},
+				{r:5,c:3, a:'CO',n:'Colorado'},{r:5,c:4, a:'KS',n:'Kansas'},
+				{r:5,c:5, a:'AR',n:'Arkansas'},{r:5,c:6, a:'TN',n:'Tennessee'},
+				{r:5,c:7, a:'NC',n:'North Carolina'},{r:5,c:8, a:'SC',n:'South Carolina'},
+				{r:6,c:2, a:'NM',n:'New Mexico'},{r:6,c:3, a:'OK',n:'Oklahoma'},
+				{r:6,c:4, a:'LA',n:'Louisiana'},{r:6,c:5, a:'MS',n:'Mississippi'},
+				{r:6,c:6, a:'AL',n:'Alabama'},{r:6,c:7, a:'GA',n:'Georgia'},
+				{r:7,c:2, a:'TX',n:'Texas'},{r:7,c:7, a:'FL',n:'Florida'},
+				{r:8,c:0, a:'HI',n:'Hawaii'},{r:8,c:1, a:'AK',n:'Alaska'},
+				{r:8,c:9, a:'DC',n:'Washington D.C.'},
+			];
+
+			const visited = new Set(['WA','MT','OR','NV','TX','WI','MI','IN','OH','WV','FL','DC']);
+			let stateMap = {};
+			try { const s = localStorage.getItem('caitlin-map'); if (s) stateMap = JSON.parse(s); } catch(e) {}
+			states.forEach(s => { if (!(s.a in stateMap)) stateMap[s.a] = visited.has(s.a) ? 'visited' : 'none'; });
+
+			function save() { try { localStorage.setItem('caitlin-map', JSON.stringify(stateMap)); } catch(e) {} }
+
+			function getStyle(status) {
+				if (status === 'visited')  return { bg:'rgba(255,110,180,0.25)', border:'#ff6eb4', color:'#ff6eb4', shadow:'0 0 10px rgba(255,110,180,0.4)' };
+				if (status === 'wishlist') return { bg:'rgba(255,224,102,0.20)', border:'#ffe066', color:'#ffe066', shadow:'0 0 10px rgba(255,224,102,0.35)' };
+				return { bg:'rgba(255,255,255,0.08)', border:'rgba(255,255,255,0.25)', color:'rgba(255,255,255,0.75)', shadow:'none' };
+			}
+
+			function updateCounter() {
+				const c = Object.values(stateMap).filter(v => v === 'visited').length;
+				document.getElementById('map-counter').textContent = c + ' / 51 visited';
+			}
+
+			function cycle(a) {
+				const cur = stateMap[a] || 'none';
+				stateMap[a] = cur === 'none' ? 'visited' : cur === 'visited' ? 'wishlist' : 'none';
+				save(); renderTile(a); updateCounter();
+			}
+
+			function renderTile(a) {
+				const el = document.getElementById('tile-' + a);
+				if (!el) return;
+				const s = getStyle(stateMap[a]);
+				el.style.background   = s.bg;
+				el.style.borderColor  = s.border;
+				el.style.color        = s.color;
+				el.style.boxShadow    = s.shadow;
+			}
+
+			const grid = document.getElementById('us-map');
+			const lookup = {};
+			states.forEach(s => { lookup[s.r + '-' + s.c] = s; });
+
+			for (let r = 0; r < 9; r++) {
+				for (let c = 0; c < 11; c++) {
+					const state = lookup[r + '-' + c];
+					const cell = document.createElement('div');
+					cell.style.cssText = 'aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:clamp(7px,1.1vw,11px);font-weight:800;font-family:sans-serif;border:1.5px solid transparent;transition:transform 0.15s,box-shadow 0.15s,background 0.2s,border-color 0.2s,color 0.2s;letter-spacing:0.02em;user-select:none;';
+					if (!state) {
+						cell.style.background = 'transparent';
+						cell.style.borderColor = 'transparent';
+					} else {
+						cell.id = 'tile-' + state.a;
+						cell.textContent = state.a;
+						cell.title = state.n + ' — click to toggle';
+						cell.style.cursor = 'pointer';
+						const s = getStyle(stateMap[state.a]);
+						cell.style.background  = s.bg;
+						cell.style.borderColor = s.border;
+						cell.style.color       = s.color;
+						cell.style.boxShadow   = s.shadow;
+						cell.addEventListener('mouseenter', () => { cell.style.transform = 'scale(1.12)'; });
+						cell.addEventListener('mouseleave', () => { cell.style.transform = 'scale(1)'; });
+						cell.addEventListener('click', () => cycle(state.a));
+					}
+					grid.appendChild(cell);
+				}
+			}
+			updateCounter();
+		})();
+		</script>
+
+	</body>
+</html>
